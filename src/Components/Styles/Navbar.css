@@ -1,0 +1,83 @@
+.navbar {
+    width: 100%;
+    height: auto;
+    padding: 16px 54px;
+    backdrop-filter: blur(8px) saturate(100%);
+    -webkit-backdrop-filter: blur(8px) saturate(100%);
+    background-color: rgba(236, 228, 183, 0.75);
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+}
+
+.navlogos,
+.navlogos a,
+.navlogos img,
+.navlinks,
+.navlinks ul,
+.navlinks li,
+.navlinks li a {
+    background-color: transparent;
+}
+
+.navlogo {
+    height: 72px;
+    margin-right: 66px;
+}
+
+.navlinks ul {
+    list-style: none;
+    display: flex;
+}
+
+.navlinks ul li a {
+    display: block;
+    text-decoration: none;
+    margin-left: 44px;
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+/* Apply ONLY to navbar links */
+.navlinks a {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.navlinks a::before,
+.navlinks a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ff7722;
+    transition: all 0.5s;
+}
+
+.navlinks a::before {
+    top: 0;
+    left: 0;
+}
+
+.navlinks a::after {
+    bottom: 0;
+    right: 0;
+}
+
+.navlinks a:hover::before {
+    width: 100%;
+    transition: width 0.25s ease-in-out;
+}
+
+.navlinks a:hover::after {
+    width: 100%;
+    transition: width 0.25s ease-in-out 0.25s;
+}
