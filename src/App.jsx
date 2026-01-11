@@ -9,7 +9,7 @@ const App = () => {
     return (
         <>
             <Navbar />
-            <Hero title="IEI Students' Chapter" bgImage={TechPark} />
+            <Hero title="IE(I) STUDENTS' CHAPTER" bgImage={TechPark} />
             <div className="container">
                 <h1>Institution of Engineers (India) - Students Chapter</h1>
 

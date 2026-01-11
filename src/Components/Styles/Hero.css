@@ -11,13 +11,13 @@
 }
 
 .hero-title {
-    font-size: 54px;
+    font-size: 66px;
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fafafa;
-    background-color: rgba(10, 10, 10, 0.5);
+    background-color: rgba(10, 10, 10, 0.7);
     text-align: center;
 }
