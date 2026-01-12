@@ -13,9 +13,9 @@ const App = () => {
             <div className="container">
                 <h1>Institution of Engineers (India) - Students Chapter</h1>
 
-                <h1>About the Local Chapter</h1>
+                <h1>Message from HOD</h1>
 
-                <h1>Departments Under the Chapter</h1>
+                <h1>Message from Faculties</h1>
 
                 <h1>Recent Events and Activities</h1>
 

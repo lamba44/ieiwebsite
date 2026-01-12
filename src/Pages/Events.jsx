@@ -2,15 +2,19 @@ import React from "react";
 import "./Styles/Events.css";
 import Footer from "../Components/Footer";
 import Navbar from "./../Components/Navbar";
-import events from "../data/eventsData"; // <-- adjust path if you put the data file somewhere else
+import events from "../data/eventsData";
+
+import TechPark from "./../assets/TechPark.webp";
+import Hero from "./../Components/Hero";
 
 const Events = () => {
     return (
         <>
             <Navbar />
+            <Hero title="EVENTS" bgImage={TechPark} />
             <main className="events-page">
                 <div className="events-wrapper">
-                    <h1 className="page-heading">Upcoming Events</h1>
+                    <h1 className="page-heading">Events</h1>
 
                     {events && events.length > 0 ? (
                         <section className="events-grid" aria-live="polite">

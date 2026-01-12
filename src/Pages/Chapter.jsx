@@ -3,10 +3,14 @@ import "./Styles/Chapter.css";
 import Footer from "../Components/Footer";
 import Navbar from "./../Components/Navbar";
 
-export const Chapter = () => {
+import TechPark from "./../assets/TechPark.webp";
+import Hero from "./../Components/Hero";
+
+const Chapter = () => {
     return (
         <>
             <Navbar />
+            <Hero title="KTR LOCAL CHAPTER" bgImage={TechPark} />
             <div className="container">
                 <h1>Local Chapter Info here</h1>
             </div>
@@ -14,3 +18,5 @@ export const Chapter = () => {
         </>
     );
 };
+
+export default Chapter;
