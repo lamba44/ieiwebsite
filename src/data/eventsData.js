@@ -1,7 +1,3 @@
-// sample data for Events page
-// Place in src/data/eventsData.js (imported in Events.jsx as "../data/eventsData")
-// Using picsum.photos seeded images so each event has a stable placeholder image.
-
 const events = [
     {
         id: 1,

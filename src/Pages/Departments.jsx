@@ -12,7 +12,10 @@ const Departments = () => {
             <Navbar />
             <Hero title="DEPARTMENTS" bgImage={TechPark} />
             <div className="container">
-                <h1>List of all Departments here</h1>
+                <h1>
+                    Info about our department here, Teachers, Club members by
+                    academic year
+                </h1>
             </div>
             <Footer />
         </>

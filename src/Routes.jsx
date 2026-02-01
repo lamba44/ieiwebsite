@@ -9,7 +9,7 @@ function AppRoutes() {
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="/events" element={<Events />} />
-            <Route path="/departments" element={<Departments />} />
+            <Route path="/department" element={<Departments />} />
             <Route path="/chapter" element={<Chapter />} />
         </Routes>
     );
