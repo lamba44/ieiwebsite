@@ -1,83 +1,83 @@
 .navbar {
     width: 100%;
     height: auto;
-    padding: 16px 54px;
-    backdrop-filter: blur(8px) saturate(100%);
-    -webkit-backdrop-filter: blur(8px) saturate(100%);
-    background-color: rgba(236, 228, 183, 0.75);
-    z-index: 1000;
+    padding: 1.5rem 8%;
+    
+    /* Remove all background and glass effects */
+    background: transparent; 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    position: sticky;
+    /* Overlay position over the Hero */
+    position: absolute; 
     top: 0;
-}
-
-.navlogos,
-.navlogos a,
-.navlogos img,
-.navlinks,
-.navlinks ul,
-.navlinks li,
-.navlinks li a {
-    background-color: transparent;
+    left: 0;
+    z-index: 1000;
 }
 
 .navlogo {
-    height: 72px;
-    margin-right: 66px;
+    height: 60px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
 }
 
 .navlinks ul {
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 .navlinks ul li a {
     display: block;
     text-decoration: none;
-    margin-left: 44px;
-    color: #0a0a0a;
+    margin-left: 45px;
+    
+    /* White text for contrast */
+    color: #ffffff; 
     font-weight: 700;
-    font-size: 18px;
-    letter-spacing: 1px;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    
+    /* Crucial: prevents text from disappearing on light parts of the image */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
-/* Apply ONLY to navbar links */
+/* --- The Gold Underline Animation --- */
 .navlinks a {
-    text-decoration: none;
     position: relative;
-    overflow: hidden;
+    padding: 8px 0;
 }
 
-.navlinks a::before,
 .navlinks a::after {
     content: "";
     position: absolute;
+    bottom: 0;
+    left: 0;
     width: 0;
     height: 2px;
-    background: #ff7722;
-    transition: all 0.5s;
+    background: #b8860b; /* Institutional Gold */
+    transition: width 0.3s ease;
 }
 
-.navlinks a::before {
-    top: 0;
-    left: 0;
-}
-
-.navlinks a::after {
-    bottom: 0;
-    right: 0;
-}
-
-.navlinks a:hover::before {
-    width: 100%;
-    transition: width 0.25s ease-in-out;
+.navlinks a:hover {
+    color: #b8860b;
 }
 
 .navlinks a:hover::after {
     width: 100%;
-    transition: width 0.25s ease-in-out 0.25s;
+}
+
+/* Ensure components are visible but the bar itself is not */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.25rem 5%;
+    }
 }
