@@ -1,143 +1,210 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./Styles/Departments.css";
 import Footer from "../Components/Footer";
 import Navbar from "./../Components/Navbar";
 import TechPark from "./../assets/TechPark.webp";
 import Hero from "./../Components/Hero";
 
+// Move data to constants for cleaner JSX
+const FACULTY = [
+    { name: "Dr. John Smith", role: "Faculty Coordinator", dept: "Dept. of Computer Science", icon: "💻", focus: "Cloud Architecture" },
+    { name: "Prof. Emily Johnson", role: "Faculty Advisor", dept: "Dept. of Electronics Engineering", icon: "📡", focus: "Embedded Systems" },
+    { name: "Dr. Michael Brown", role: "Technical Mentor", dept: "Dept. of Mechanical Engineering", icon: "⚙️", focus: "Robotic Kinematics" },
+];
+
+const COMPETENCIES = [
+    { title: "Industrial Training", desc: "Mandatory internships with Tier-1 tech partners to ensure job readiness.", tag: "Career" },
+    { title: "R&D Support", desc: "Dedicated funding for student-led patents and international publications.", tag: "Research" },
+    { title: "Global Outreach", desc: "Student exchange programs with leading technical universities worldwide.", tag: "Global" }
+];
+
 const Departments = () => {
+    // Animation Variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    };
+
     return (
         <div className="departments-page">
             <Navbar />
             <Hero title="DEPARTMENTS" bgImage={TechPark} />
 
-            <div className="container">
-                {/* --- Vision & Mission Section --- */}
-                <section className="section-grid">
-                    <div className="content-box">
-                        <h2 className="section-title">Our Vision</h2>
-                        <p>
-                            To be a center of excellence in technical education and research, 
-                            producing globally competent professionals with a sense of social 
-                            responsibility and ethical values.
-                        </p>
-                    </div>
-                    <div className="content-box">
-                        <h2 className="section-title">Our Mission</h2>
-                        <p>
-                            To provide a conducive environment for innovation and practical learning, 
-                            bridging the gap between academia and industry through collaborative 
-                            research and hands-on technical exposure.
-                        </p>
-                    </div>
-                </section>
-
-                <hr className="divider" />
-
-                {/* --- About Section --- */}
-                <section className="section">
-                    <h2 className="section-title">Department Overview</h2>
-                    <div className="about-text">
-                        <p>
-                            The department actively supports the <strong>Institution of Engineers (India) Students' Chapter</strong>, 
-                            fostering an ecosystem where theoretical knowledge meets practical application. We empower 
-                            students to bridge the gap between classroom learning and industrial demands.
-                        </p>
-                        <div className="stats-bar">
-                            <div className="stat-item"><strong>500+</strong><span>Students</span></div>
-                            <div className="stat-item"><strong>15+</strong><span>Expert Faculty</span></div>
-                            <div className="stat-item"><strong>10+</strong><span>Research Labs</span></div>
-                            <div className="stat-item"><strong>25+</strong><span>Annual Events</span></div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* --- Faculty Coordinators --- */}
-                <section className="section bg-light">
-                    <h2 className="section-title text-center">Faculty Mentorship</h2>
-                    <p className="section-subtitle">Guiding the next generation of engineering leaders.</p>
+            <div className="container department-layout">
+                <div className="main-content">
                     
-                    <div className="faculty-grid">
-                        <div className="faculty-card">
-                            <div className="faculty-info">
-                                <h3>Dr. John Smith</h3>
-                                <span className="designation">Faculty Coordinator</span>
-                                <p>Dept. of Computer Science</p>
-                            </div>
+                    {/* --- Vision & Mission --- */}
+                    <section className="section-grid">
+                        <motion.div 
+                            className="content-box glass"
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="accent-line"></div>
+                            <h2 className="section-title">Our Vision</h2>
+                            <p>
+                                To be a center of excellence in technical education and research, 
+                                producing globally competent professionals with a sense of social 
+                                responsibility and ethical values.
+                            </p>
+                        </motion.div>
+                        <motion.div 
+                            className="content-box glass"
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="accent-line"></div>
+                            <h2 className="section-title">Our Mission</h2>
+                            <p>
+                                To provide a conducive environment for innovation and practical learning, 
+                                bridging the gap between academia and industry through collaborative 
+                                research.
+                            </p>
+                        </motion.div>
+                    </section>
+
+                    {/* --- Core Competencies --- */}
+                    <motion.section 
+                        className="section"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="section-title">Core Competencies</h2>
+                        <div className="competency-grid">
+                            {COMPETENCIES.map((item, i) => (
+                                <motion.div key={i} className="comp-item" variants={itemVariants}>
+                                    <span className="comp-tag">{item.tag}</span>
+                                    <h4>{item.title}</h4>
+                                    <p>{item.desc}</p>
+                                </motion.div>
+                            ))}
                         </div>
-                        <div className="faculty-card">
-                            <div className="faculty-info">
-                                <h3>Prof. Emily Johnson</h3>
-                                <span className="designation">Faculty Advisor</span>
-                                <p>Dept. of Electronics Engineering</p>
-                            </div>
+                    </motion.section>
+
+                    {/* --- Faculty Mentorship --- */}
+                    <section className="section mentorship-bg">
+                        <h2 className="section-title text-center">Faculty Mentorship</h2>
+                        <motion.div 
+                            className="faculty-grid"
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                        >
+                            {FACULTY.map((f, i) => (
+                                <motion.div key={i} className="faculty-card" variants={itemVariants} whileHover={{ y: -10 }}>
+                                    <div className="faculty-header">
+                                        <div className="faculty-avatar">{f.icon}</div>
+                                        <div className="faculty-meta">
+                                            <h3>{f.name}</h3>
+                                            <span className="designation">{f.role}</span>
+                                        </div>
+                                    </div>
+                                    <div className="faculty-body">
+                                        <p><strong>Focus:</strong> {f.focus}</p>
+                                        <p className="dept-label">{f.dept}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </section>
+
+                    {/* --- Student Steering Committee --- */}
+                    <motion.section 
+                        className="section"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="section-title">Student Steering Committee</h2>
+                        <div className="student-table-container">
+                            <table className="student-table">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Coordinator</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Final Year</strong></td>
+                                        <td>Rahul Sharma</td>
+                                        <td>Executive Lead</td>
+                                        <td><span className="status-badge">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Third Year</strong></td>
+                                        <td>Arjun Patel</td>
+                                        <td>Technical Strategy</td>
+                                        <td><span className="status-badge">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Second Year</strong></td>
+                                        <td>Priya Nair</td>
+                                        <td>Operations & Outreach</td>
+                                        <td><span className="status-badge">Active</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div className="faculty-card">
-                            <div className="faculty-info">
-                                <h3>Dr. Michael Brown</h3>
-                                <span className="designation">Technical Mentor</span>
-                                <p>Dept. of Mechanical Engineering</p>
-                            </div>
+                    </motion.section>
+
+                    {/* --- Call to Action --- */}
+                    <motion.section 
+                        className="cta-banner"
+                        whileHover={{ scale: 1.01 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                    >
+                        <div className="cta-content">
+                            <h3>Ready to Innovate?</h3>
+                            <p>Join the Students' Chapter and gain access to premium labs and technical workshops.</p>
+                        </div>
+                        <motion.button 
+                            className="btn-white"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Join Chapter
+                        </motion.button>
+                    </motion.section>
+                </div>
+
+                {/* Sidebar Navigation */}
+                <aside className="dept-sidebar">
+                    <div className="sticky-sidebar">
+                        <div className="sidebar-header">
+                            <div className="dot"></div>
+                            <h4>Innovation Hubs</h4>
+                        </div>
+                        <ul className="sidebar-links">
+                            <li><a href="#robotics">Robotics & Automation</a></li>
+                            <li><a href="#software">Software Development</a></li>
+                            <li><a href="#ai">AI & Data Science</a></li>
+                            <li><a href="#electronics">Electronics Innovation</a></li>
+                            <li><a href="#sustainable">Sustainable Engineering</a></li>
+                        </ul>
+                        <div className="sidebar-footer">
+                            <p>Contact for Research Collaborations</p>
+                            <a href="mailto:research@iei.edu" className="sidebar-mail">research@iei.edu</a>
                         </div>
                     </div>
-                </section>
-
-                {/* --- Student Leadership --- */}
-                <section className="section">
-                    <h2 className="section-title">Student Coordinators</h2>
-                    <div className="student-table-container">
-                        <table className="student-table">
-                            <thead>
-                                <tr>
-                                    <th>Year</th>
-                                    <th>Coordinator</th>
-                                    <th>Specialization / Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Final Year</strong></td>
-                                    <td>Rahul Sharma</td>
-                                    <td>Student Coordinator (Lead)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Third Year</strong></td>
-                                    <td>Arjun Patel</td>
-                                    <td>Technical Team Lead</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Second Year</strong></td>
-                                    <td>Priya Nair</td>
-                                    <td>Event Management</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                {/* --- Innovation Hubs (Clubs) --- */}
-                <section className="section clubs-section">
-                    <h2 className="section-title">Special Interest Groups</h2>
-                    <div className="clubs-grid">
-                        {[
-                            "Robotics & Automation",
-                            "Software Development",
-                            "AI & Data Science",
-                            "Electronics Innovation",
-                            "Sustainable Engineering"
-                        ].map((club, index) => (
-                            <div key={index} className="club-tag">{club}</div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* --- Call to Action --- */}
-                <section className="cta-section">
-                    <h3>Interested in joining our Technical Chapter?</h3>
-                    <p>Stay updated with the latest departmental workshops and seminars.</p>
-                    <button className="btn-primary">View Upcoming Events</button>
-                </section>
-
+                </aside>
             </div>
             <Footer />
         </div>
